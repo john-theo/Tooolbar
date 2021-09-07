@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooolbar Demo</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+    <script src="../dist/index.min.js"></script>
+    <script src="./icon-switcher.js"></script>
+    <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
+    <script src="./editor.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/inter.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .github-fork-ribbon::before {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <a class="github-fork-ribbon left-bottom fixed" href="https://github.com/John-Theo/Tooolbar"
+        data-ribbon="Check on GitHub" title="Check on GitHub">Check on GitHub</a>
+    <div id="container"></div>
+    <main>
+        <div class="right" id="events">
+            <label>( Interact with the toolbar to see logs here )</label>
+        </div>
+        <div class="left" id="monaco_editor"></div>
+    </main>
+    <script src="./index.js"></script>
+</body>
+
+</html>

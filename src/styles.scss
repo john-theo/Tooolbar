@@ -1,0 +1,187 @@
+.#{$app-name} {
+    color: var(--x-cxn);
+    background-color: var(--x-cbb);
+    // border-top: 1px solid var(--x-cbo);
+    // border-bottom: 1px solid var(--x-cbo);
+    padding: 0 var(--x-sbp);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: fit-content;
+    height: 100%;
+    position: relative;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    list-style: none;
+
+    * {
+        user-select: none !important;
+
+        &::selection {
+            background-color: transparent;
+        }
+    }
+
+    [tip-target]  {
+        position: relative;
+
+        .tip {
+            white-space: nowrap;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: var(--x-spp);
+            top: calc(var(--x-stb) + 10px);
+            font-size: var(--x-sxl);
+            color: var(--x-cxn);
+            box-shadow: 0 0 20px 4px rgba(154, 161, 177, .15),
+                0 4px 80px -8px rgba(36, 40, 47, .25),
+                0 4px 4px -2px rgba(91, 94, 105, .15);
+            background-color: var(--x-cpb);
+            border-radius: var(--x-str);
+            line-height: 1.4;
+            outline: 0;
+            transition-property: transform,
+                opacity;
+            transition-timing-function: cubic-bezier(.54, 1.5, .38, 1.11);
+            transition-duration: 0.5s;
+            opacity: 0;
+            pointer-events: none;
+            text-align: center;
+
+            span {
+                font-size: var(--x-sxs);
+                color: var(--x-cxm);
+            }
+
+            &[show] {
+                transform: translate(-50%, var(--x-spo));
+                opacity: 1;
+            }
+        }
+    }
+
+    .icon-counter2 .tip {
+        top: var(--x-stb);
+    }
+
+    .tool {
+        margin: 0 2px;
+        flex-shrink: 0;
+        position: relative;
+        border-radius: var(--x-str);
+        width: var(--x-stb);
+        height: var(--x-stb);
+        padding: 5px;
+        box-sizing: content-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // transition: background-color 0.2s ease-out;
+
+        &:hover {
+            background-color: var(--x-cth);
+        }
+
+        &.disabled {
+            color: var(--x-cxm);
+            cursor: default;
+
+            &:hover {
+                background-color: transparent;
+            }
+
+            &:active {
+                background-color: transparent;
+            }
+
+            .tip {
+                color: var(--x-cxm);
+            }
+        }
+
+        &:active {
+            background-color: var(--x-cta);
+        }
+    }
+
+    .spacer {
+        height: 1px;
+        padding: 0;
+    }
+
+    .divider {
+        box-sizing: border-box;
+        vertical-align: middle;
+        width: 1px;
+        padding: 0;
+        background-color: var(--x-cbo);
+        border: none;
+    }
+
+    .icon {
+        width: var(--x-sti);
+        height: var(--x-sti);
+        vertical-align: middle;
+        color: inherit;
+        transform: translateY(-1px);
+    }
+
+    input[type="number"] {
+        font-size: var(--x-sxi);
+        line-height: var(--x-stb);
+        padding: 5px;
+        caret-color: transparent;
+        outline: none;
+        border: none;
+        text-align: center;
+        background-color: transparent;
+        color: inherit;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+
+    .icon-button {
+        cursor: pointer;
+    }
+
+    .icon-counter, .icon-counter2 {
+        cursor: text;
+        width: unset;
+        padding: 5px 10px;
+
+        .icon {
+            margin-right: 3px;
+        }
+
+        input[type="number"] {
+            margin: unset;
+            padding: unset;
+            width: calc(var(--x-sti) * 1.3);
+            height: calc(var(--x-sti) * 1.3);
+
+            &:focus,
+            &:hover {
+                background-color: unset;
+            }
+        }
+    }
+
+    .icon-scroller {
+        cursor: ns-resize;
+    }
+
+    .icon-counter,
+    .icon-counter2,
+    .icon-scroller {
+        &:active {
+            background-color: var(--x-cth);
+        }
+    }
+
+}

@@ -1,0 +1,1 @@
+**IMPORTANT:** The `svg` files in the folder are all downloaded from [AkarIcons](https://github.com/artcoholic/akar-icons-app). Please check out their amazing work!

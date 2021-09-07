@@ -1,0 +1,37 @@
+{
+    "name": "tooolbar",
+    "version": "0.1.0",
+    "description": "Interactive toolbar rendered from LINES OF JSON. Lightweight yet powerful, you can build a 🔥 toolbar in literally seconds with this 7KB (GZipped) package.",
+    "author": "Xinhao Zhuang",
+    "homepage": "https://github.com/John-Theo/Tooolbar",
+    "keywords": [
+        "toolbar",
+        "lightweight",
+        "json"
+    ],
+    "repository": "github:John-Theo/Tooolbar",
+    "scripts": {
+        "build": "yarn run clean && webpack --mode production",
+        "dev": "yarn run clean && webpack --mode development --watch",
+        "clean": "rm -rf dist && mkdir dist"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "css-loader": "^5.2.5",
+        "dotenv": "^9.0.2",
+        "dts-bundle-webpack": "^1.0.2",
+        "sass": "^1.32.13",
+        "sass-loader": "^11.1.1",
+        "style-loader": "^2.0.0",
+        "terser-webpack-plugin": "^5.1.2",
+        "ts-loader": "^9.2.1",
+        "typescript": "^4.2.4",
+        "webpack": "^5.37.1",
+        "webpack-cli": "^4.7.0"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ]
+}

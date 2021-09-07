@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    color: #333;
+}
+
+body.dark {
+    background-color: #1e1e1e;
+    color: #dcdcdc;
+}
+
+body.dark .right span[time] {
+    background-color: rgb(52, 52, 52);
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#container {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    z-index: 100;
+}
+
+.tooolbar.bar {
+    justify-content: center;
+}
+
+.tool.red {
+    color: rgb(255, 70, 70)
+}
+
+.tooolbar,
+.tooolbar *,
+.tippy-box,
+.right {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, Arial !important;
+}
+
+main {
+    height: calc(100% - 70px);
+    width: 100%;
+    display: flex;
+}
+
+.left {
+    width: 450px;
+    height: 100%;
+}
+
+.right {
+    height: 100%;
+    flex: auto;
+    font-size: 13px;
+    line-height: 2.25;
+    padding: 20px 40px;
+    user-select: none;
+    overflow-y: auto;
+    border-right: 1px solid var(--x-cbo);
+}
+
+.right span {
+    color: #333;
+    font-weight: bold;
+}
+
+.right span[input],
+.mtk5,
+.mtk11 {
+    color: rgb(176, 176, 0) !important;
+}
+
+.mtk7,
+.mtk6,
+.right span[change] {
+    color: rgb(145, 0, 128) !important;
+}
+
+
+.mtk20,
+.mtk4,
+.mtk8,
+.right span[click] {
+    color: rgb(145, 24, 0) !important;
+}
+
+.icon-switcher {
+    cursor: pointer;
+}
+
+
+.right span[dump] {
+    color: rgb(34, 136, 0);
+}
+
+.right span[time] {
+    padding: 3px 6px;
+    border-radius: 4px;
+    background-color: rgb(223, 223, 223);
+    margin-right: 10px;
+    color: #888;
+    font-size: 12px;
+    opacity: 0.5;
+    font-weight: normal;
+}
+
+.right label {
+    color: #888;
+}
+
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+
+    20%,
+    60% {
+        transform: rotate(-25deg)
+    }
+
+    40%,
+    80% {
+        transform: rotate(10deg)
+    }
+}
