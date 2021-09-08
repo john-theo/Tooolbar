@@ -1,4 +1,4 @@
-import { IBar, IIconBaseConfig, IThemeConfig, IThemes, IToolEventDetail } from './interfaces';
+import { IBar, IIconBaseConfig, ITheme, IThemeConfig, IThemes, IToolEventDetail } from './interfaces';
 // import { Toppy } from './toppy';
 import { assertProps, camelCaseToDash, removeNull } from './utils';
 import { IToolConfig, IIconConfig, IBarChildConfig, ITool, IBarPart, IIcon } from './interfaces';
@@ -47,17 +47,23 @@ export class Bar implements IBar {
         return themes.current?.id || 'none';
     }
 
-    registerTheme(id: string, config: IThemeConfig) {
-        themes.register(id, config);
-        return this;
+    static registerTheme(id: string, config: IThemeConfig): ITheme {
+        return themes.register(id, config);
     }
 
     get themes(): IThemes {
         return themes;
     }
 
-    bindTo(container: HTMLElement) {
-        container.appendChild(this.$el);
+    bindTo(container: HTMLElement | string) {
+        let el;
+        if (typeof container === "string")
+            el = document.querySelector(container)
+        else
+            el = container as HTMLElement
+        if (!el || !(el instanceof HTMLElement))
+            throw Error("Container must be an HTML element or its css selector.")
+        el.appendChild(this.$el);
         return this;
     }
 

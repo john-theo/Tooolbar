@@ -1,32 +1,5 @@
-// import { Instance, Props } from 'tippy.js';
-
-// export type ITippy = Instance<Props>;
-// export interface IEventDetail {
-//     el: HTMLElement
-//     tool: ITool
-//     value: any,
-//     id: string
-// }
-// export interface IToppyConfig {
-//     placement?: 'top' | 'bottom';
-//     animation?: 'subtle' | 'normal';
-//     label: string
-//     sublabel?: string;
-// }
-
 export type ToolEventName = 'click' | 'change';
 export type EventCallback = (e: CustomEvent) => {};
-
-// export interface IToppy {
-//     target: HTMLElement;
-
-//     updateConfig(config: Partial<IToppyConfig>): void;
-//     mount(): IToppy
-//     get label(): string;
-//     get sublabel(): string | undefined;
-//     disable(): void;
-//     enable(): void;
-// }
 
 export type AddableItemType = IBarChild | IBarChildConfig | string;
 
@@ -129,6 +102,7 @@ export interface IThemeConfig {
             button?: CssSizeValue;
             icon?: CssSizeValue;
             radius?: CssSizeValue;
+            margin?: CssSizeValue;
         },
         tip?: {
             padding?: CssSizeValue;

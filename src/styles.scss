@@ -67,7 +67,7 @@
     }
 
     .tool {
-        margin: 0 2px;
+        margin: 0 var(--x-stm);
         flex-shrink: 0;
         position: relative;
         border-radius: var(--x-str);

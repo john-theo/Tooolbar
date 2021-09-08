@@ -55,6 +55,7 @@ const _slack: IThemeConfig = {
             button: 32,
             icon: 18,
             radius: 8,
+            margin: 2,
         },
         tip: {
             padding: "10px 16px",
@@ -81,6 +82,7 @@ const cssVarNameMap = {
     tip: 'p',
 
     padding: 'p',
+    margin: 'm',
     offset: 'o',
     height: 'h',
     width: 'w',

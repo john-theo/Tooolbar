@@ -1,6 +1,6 @@
 import { registerToolType } from '.';
 import { BarChild, Icon, Tool } from './core';
-import { IBarChildConfig, IIcon, IIconBaseConfig, IIconConfig, IIconScrollerConfig, IToolConfig } from './interfaces';
+import { IBarChildConfig, IIcon, IIconConfig, IIconScrollerConfig, IToolConfig } from './interfaces';
 import { assertProps, Limiter } from './utils';
 
 
@@ -48,9 +48,6 @@ export interface ICounterConfig extends IToolConfig {
     target?: HTMLElement
 }
 
-export class ToolEvent extends CustomEvent<any> {
-
-}
 
 export class Counter extends Tool {
     $limiter: Limiter;
@@ -74,6 +71,7 @@ export class Counter extends Tool {
         const eventTarget = config.target || this.$el;
         eventTarget.addEventListener("wheel", (e) => {
             e.deltaY < 0 ? this.$limiter.inc() : this.$limiter.dec();
+            e.preventDefault();
         });
         this._lastState = this._state;
     }
@@ -269,6 +267,7 @@ export class IconScroller extends Tool {
         });
         this.$el.addEventListener("wheel", (e) => {
             e.deltaY < 0 ? this.$limiter.inc() : this.$limiter.dec();
+            e.preventDefault();
         });
         this.$el.addEventListener("mouseleave", (e: Event) => {
             this.emitEvent("change", undefined, e, true);
