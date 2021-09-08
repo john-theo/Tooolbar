@@ -65,10 +65,12 @@ function toggleDarkMode(bar) {
         bar.theme = 'dark';
         document.body.classList.add('dark');
         $editor.setTheme('vs-dark');
+        document.documentElement.style.setProperty('color-scheme', 'dark');
     } else {
         bar.theme = 'light';
         document.body.classList.remove('dark');
         $editor.setTheme('vs');
+        document.documentElement.style.setProperty('color-scheme', 'none');
     }
 }
 
