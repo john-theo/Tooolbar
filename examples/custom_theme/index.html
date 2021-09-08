@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Theme</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/inter.min.css">
+    <script src="../../dist/index.min.js"></script>
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, Arial !important;
+        }
+
+        .tooolbar {
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px 0 rgba(5, 4, 62, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bar" style="height: 76px; width: 550px; margin: 40px 40px"></div>
+    <script>
+        const config = [
+            { id: "image", type: 'ib', icon: "image", label: "Gallery" },
+            { id: "file", type: 'ib', icon: "file", label: "Documents" },
+            { id: "game-controller", type: 'ib', icon: "game-controller", label: "Games" },
+            { id: "book", type: 'ib', icon: "book", label: "Bookshelf" },
+            { type: '-', width: "100px" },
+            { type: '|', height: "40%" },
+            { id: "bell", type: 'ib', icon: "bell", label: "Notifications" },
+            { id: "gear", type: 'ib', icon: "gear", label: "Settings" },
+            { id: "person", type: 'ib', icon: "person", label: "Account" }
+        ];
+
+        const container = document.getElementById("bar");
+
+        const { Bar } = Tooolbar;
+        Bar.registerTheme("ocean", {
+            color: {
+                text: {
+                    normal: "#dbdbdb",
+                    markup: "#858585",
+                },
+                bar: {
+                    background: "#05043e",
+                    outline: "#3c3c3c",
+                },
+                tip: {
+                    background: "#05043e",
+                },
+                tool: {
+                    active: "#30305a",
+                    hover: "#30305a",
+                }
+            },
+            size: {
+                bar: {
+                    padding: 12,
+                },
+                tool: {
+                    button: 40,
+                    icon: 22,
+                    radius: 8,
+                },
+                tip: {
+                    offset: 20,
+                }
+            }
+        })
+        const bar = new Bar({ iconBaseUrl: "../../assets/icon" })
+            .bindTo(container)
+            .load(config);
+
+            bar.theme = 'ocean'
+    </script>
+</body>
+
+</html>

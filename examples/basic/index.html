@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/inter.min.css">
+    <script src="../../dist/index.min.js"></script>
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif, Arial !important;
+        }
+        .tooolbar.bar {
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="bar" style="height: 60px; width: 550px; margin: 20px 40px"></div>
+    <script>
+        const config = [
+                { id: "image", type: 'ib', icon: "image", label: "Gallery" },
+                { id: "file", type: 'ib', icon: "file", label: "Documents" },
+                { id: "game-controller", type: 'ib', icon: "game-controller", label: "Games" },
+                { id: "book", type: 'ib', icon: "book", label: "Bookshelf" },
+                { type: '-', width: "100px" },
+                {type: '|', height: "40%"},
+                { id: "bell", type: 'ib', icon: "bell", label: "Notifications" },
+                { id: "gear", type: 'ib', icon: "gear", label: "Settings" },
+                { id: "person", type: 'ib', icon: "person", label: "Account" }
+            ];
+
+            const container = document.getElementById("bar");
+
+            const { Bar } = Tooolbar;
+
+            const bar = new Bar({ iconBaseUrl: "../../assets/icon" })
+                .bindTo(container)
+                .load(config);
+    </script>
+</body>
+</html>
