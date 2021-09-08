@@ -21,9 +21,29 @@ Interactive toolbar rendered from **LINES OF JSON**. Lightweight yet powerful, y
 
 - **Easy to use**, generate a nice-looking toolbar using **a simple json** 😱.
 
-- **Cool Components**, check out [IconCounter](), [IconScroller]() and others 🤩.
+- **Cool Components**, check out [IconCounter](#icon-counter), [IconScroller](#icon-scroller) and others 🤩.
 
 - **Extensibility**, build a full-featured custom component in [~50 lines of code](https://unpkg.com/tooolbar@0.1.2/demo/icon-switcher.js).
+
+## Get Started
+
+### npm
+
+```bash
+npm install tooolbar
+```
+
+### yarn
+
+```bash
+yarn add tooolbar
+```
+
+### CDN
+
+```bash
+<script src="https://unpkg.com/tooolbar@0.1.2/dist/index.min.js"></script>
+```
 
 ## Document
 
