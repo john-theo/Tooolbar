@@ -1,6 +1,6 @@
 {
     "name": "tooolbar",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Interactive toolbar rendered from LINES OF JSON. Lightweight yet powerful, you can build a 🔥 toolbar in literally seconds with this 7KB (GZipped) package.",
     "author": "Xinhao Zhuang",
     "homepage": "https://github.com/John-Theo/Tooolbar",
