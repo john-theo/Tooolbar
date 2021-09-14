@@ -1,6 +1,6 @@
 {
     "name": "tooolbar",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Interactive toolbar rendered from LINES OF JSON. Lightweight yet powerful, you can build a 🔥 toolbar in literally seconds with this 7KB (GZipped) package.",
     "author": "Xinhao Zhuang",
     "homepage": "https://github.com/John-Theo/Tooolbar",
@@ -13,7 +13,10 @@
     "scripts": {
         "build": "yarn run clean && webpack --mode production",
         "dev": "yarn run clean && webpack --mode development --watch",
-        "clean": "rm -rf dist && mkdir dist"
+        "clean": "rm -rf dist && mkdir dist",
+        "preversion": "yarn config set version-tag-prefix \"\" && yarn build",
+        "postversion": "npm publish -f --registry=http://registry.npmjs.org --verbose && git push --tags && echo \"Successfully released version $npm_package_version!\"",
+        "unpublish": "_u() { vv=$1 v=${2:-$(npm_package_version)}; npm unpublish tooolbar@$v --registry=http://registry.npmjs.org; git push --delete origin $v; git tag -d $v; npm version $1; echo \"Successfully unpublished version $v!\"; }; _u"
     },
     "license": "MIT",
     "devDependencies": {
