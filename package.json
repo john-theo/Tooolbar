@@ -1,6 +1,6 @@
 {
     "name": "tooolbar",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "Interactive toolbar rendered from LINES OF JSON. Lightweight yet powerful, you can build a 🔥 toolbar in literally seconds with this 7KB (GZipped) package.",
     "author": "Xinhao Zhuang",
     "homepage": "https://github.com/John-Theo/Tooolbar",
@@ -18,6 +18,10 @@
         "postversion": "npm publish --force --registry=http://registry.npmjs.org --verbose && git push --tags && echo \"Successfully released version $npm_package_version!\"",
         "unpublish": "_u() { v=${1:-$npm_package_version}; npm unpublish tooolbar@$v --force --registry=http://registry.npmjs.org; git push --delete origin $v; git tag -d $v; echo \"Successfully unpublished version $v!\"; }; _u"
     },
+    "main": "dist/index.min.js",
+    "jsdelivr": "dist/index.min.js",
+    "unpkg": "dist/index.min.js",
+    "typings": "dist/index.d.ts",
     "license": "MIT",
     "devDependencies": {
         "css-loader": "^5.2.5",
