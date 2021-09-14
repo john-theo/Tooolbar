@@ -5,37 +5,37 @@ import { assertProps, Limiter } from './utils';
 
 
 export interface IDividerConfig extends IBarChildConfig {
-    height?: number | string;
+    span?: number | string;
     margin?: number | string;
 }
 
 export class Divider extends BarChild {
     constructor(config: IDividerConfig) {
-        let { height, margin } = config;
+        let { span, margin } = config;
         super({ ...config, tag: 'li' });
-        height = height || "40%";
+        span = span || "40%";
         margin = margin || "20px";
-        if (typeof height === 'number')
-            height = height + 'px';
+        if (typeof span === 'number')
+            span = span + 'px';
         if (typeof margin === 'number')
             margin = margin + 'px';
-        this.$el.style.height = height;
-        this.$el.style.margin = "0 " + margin;
+        this.$el.style.setProperty('--span', span.toString());
+        this.$el.style.setProperty('--margin', margin.toString());
     }
 }
 
 export interface ISpacerConfig extends IBarChildConfig {
-    width?: number | string;
+    span?: number | string;
 }
 
 export class Spacer extends BarChild {
     constructor(config: ISpacerConfig) {
-        let { width } = config;
+        let { span } = config;
         super({ ...config, tag: 'li' });
-        width = width || 20;
-        if (typeof width === 'number')
-            width = width.toString() + 'px';
-        this.$el.style.width = width;
+        span = span || 20;
+        if (typeof span === 'number')
+            span = span + 'px';
+        this.$el.style.setProperty('--span', span.toString());
     }
 }
 

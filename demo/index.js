@@ -60,7 +60,7 @@ const bar = new Bar({ iconBaseUrl: "../assets/icon", width: "100%", tooltip: 'bo
     .load(config);
 
 
-function toggleDarkMode(bar) {
+function toggleDarkMode() {
     if (bar.theme === 'light') {
         bar.theme = 'dark';
         document.body.classList.add('dark');
@@ -87,7 +87,7 @@ function changeButtonEnabled(name, enable) {
 
 function addButtonInteractions() {
     bar.get('dark') && bar.get('dark').addEventListener('click', (e) => {
-        toggleDarkMode(bar);
+        toggleDarkMode();
     })
     bar.get('clear') && bar.get('clear').addEventListener('click', (e) => {
         console.log(e.detail)

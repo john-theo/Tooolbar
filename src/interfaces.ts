@@ -1,7 +1,7 @@
 export type ToolEventName = 'click' | 'change';
 export type EventCallback = (e: CustomEvent) => {};
 
-export type AddableItemType = IBarChild | IBarChildConfig | string;
+export type AddableItemType = IBarPart | IBarChildConfig | string;
 
 
 export interface IBarPart {
@@ -45,7 +45,6 @@ export interface IBarChildConfig extends IBarPartConfig {
     tag?: string
 }
 
-export interface IBarChild extends IBarPart { };
 export interface ITool extends IBarPart {
     id: string
     disabled: boolean
@@ -56,6 +55,7 @@ export interface IToolConfig extends IBarChildConfig {
     class?: string
     sublabel?: string
     disabled?: boolean
+    listeners?: Map<string, EventListener>
 }
 
 export interface IBarConfig {
@@ -63,18 +63,20 @@ export interface IBarConfig {
     width: string
     height: string
     tooltip: 'top' | 'bottom'
+    align?: string
+    vertical?: boolean
 }
 
 export interface IBar {
     $el: HTMLElement
     iconBaseUrl: string
-    children: IBarChild[]
+    children: IBarPart[]
     tooltip?: 'top' | 'bottom'
 
     get theme(): string
     get themes(): IThemes
     bindTo(container: HTMLElement): IBar
-    mount(child: IBarChild): void
+    mount(child: IBarPart): void
     add(child: AddableItemType): IBar
     addMany(children: AddableItemType[]): IBar
     load(children: AddableItemType[]): IBar

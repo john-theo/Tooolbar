@@ -17,7 +17,11 @@
     <div id="bar" style="height: 60px; width: 550px; margin: 20px 40px"></div>
     <script>
         const config = [
-                { id: "image", type: 'ib', icon: "image", label: "Gallery" },
+                { id: "image", type: 'ib', icon: "image", label: "Gallery", listeners: {
+                    click() {
+                        console.log(this, 'clicked (defined in init)!')
+                    }
+                } },
                 { id: "file", type: 'ib', icon: "file", label: "Documents" },
                 { id: "game-controller", type: 'ib', icon: "game-controller", label: "Games" },
                 { id: "book", type: 'ib', icon: "book", label: "Bookshelf" },
@@ -25,7 +29,7 @@
                 {type: '|', height: "40%"},
                 { id: "bell", type: 'ib', icon: "bell", label: "Notifications" },
                 { id: "gear", type: 'ib', icon: "gear", label: "Settings" },
-                { id: "person", type: 'ib', icon: "person", label: "Account" }
+                { id: "person", type: 'ib', icon: "person", label: "Account",  }
             ];
 
             const container = document.getElementById("bar");
@@ -35,6 +39,10 @@
             const bar = new Bar({ iconBaseUrl: "../../assets/icon" })
                 .bindTo(container)
                 .load(config);
+
+            bar.get('book').addEventListener("click", ()=>{
+                console.log(bar.get('book'), 'clicked (defined dynamically)!')
+            })
     </script>
 </body>
 </html>

@@ -320,12 +320,12 @@ Check out [this gist](https://gist.github.com/John-Theo/ce178ae4e69047e91d9eda94
 
 ## Features on the way
 
-- Vertical mode
 - Tooltip positioning
-- Tools flex alignment
 - Tool id uniqueness check
 - Generate from HTML tags
 - Integrate common icon packs
+- Text Buttons and input box
+- React & Vuejs wrapper
 
 ## Change log
 

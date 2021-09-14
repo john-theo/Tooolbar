@@ -1,6 +1,6 @@
 import {
     IBar, IIconBaseConfig, ITheme, IThemeConfig, IThemes, IToolConfig, IIconConfig,
-    IBarChildConfig, ITool, IBarPart, IIcon, IBarConfig, AddableItemType, IBarChild
+    IBarChildConfig, ITool, IBarPart, IIcon, IBarConfig, AddableItemType
 } from './interfaces';
 import { assertProps, camelCaseToDash, removeNull } from './utils';
 import { themes } from './theme';
@@ -22,7 +22,7 @@ const APP_NAME = process.env.APP_NAME!;
 export class Bar implements IBar {
     $el: HTMLElement;
     iconBaseUrl: string;
-    children: IBarChild[] = [];
+    children: IBarPart[] = [];
     tooltip: 'top' | 'bottom';
     tools: { [id: string]: Tool } = {};
 
@@ -33,9 +33,15 @@ export class Bar implements IBar {
         this.$el.classList.add('bar');
         this.tooltip = config.tooltip || 'bottom';
         this.iconBaseUrl = config.iconBaseUrl;
-        const { width, height } = config;
+        let { width, height, align, vertical } = config;
         if (width) this.$el.style.width = width;
         if (height) this.$el.style.height = height;
+        align = align || 'center';
+        if (align === 'start' || align === 'end')
+            align = 'flex-' + align
+        this.$el.style.setProperty('--align', align);
+        if (vertical)
+            this.$el.setAttribute('vertical', '');
     }
 
     set theme(id: string) {
@@ -59,7 +65,7 @@ export class Bar implements IBar {
         if (typeof container === "string")
             el = document.querySelector(container)
         else
-            el = container as HTMLElement
+            el = container
         if (!el || !(el instanceof HTMLElement))
             throw Error("Container must be an HTML element or its css selector.")
         el.appendChild(this.$el);
@@ -111,7 +117,7 @@ export class Bar implements IBar {
     }
 
     dump() {
-        return Object.values(this.tools).map(tool=>(tool.config))
+        return Object.values(this.tools).map(tool => (tool.config))
     }
 
     getSvgLink(icon: string) {
@@ -216,7 +222,7 @@ export class Tip {
 
     setLabel(label?: string, sublabel?: string) {
         if (!label)
-            return this.setContent(undefined);
+            return this.setContent();
         this.label = label;
         this.sublabel = sublabel;
         if (sublabel)
@@ -250,15 +256,20 @@ export abstract class Tool extends BarChild implements ITool {
     constructor(config: IToolConfig) {
         super(config);
         assertProps(config, ['id']);
-        const { label, sublabel, id, disabled, bar } = config;
+        const { label, sublabel, id, disabled, bar, listeners } = config;
         this.$el.classList.add('tool');
         if (config.class)
-            this.$el.className += ' '+config.class
+            this.$el.className += ' ' + config.class
         this.id = id;
-        this.$tip = new Tip(this.$el, { position: bar.tooltip || 'bottom'})
+        this.$tip = new Tip(this.$el, { position: bar.tooltip || 'bottom' })
         this.$tip.setLabel(label, sublabel);
         if (disabled)
             this.disable();
+        if (listeners) {
+            for (const [name, handler] of Object.entries(listeners)) {
+                this.addEventListener(name, handler.bind(this));
+            }
+        }
     }
 
     disable() {
@@ -273,7 +284,7 @@ export abstract class Tool extends BarChild implements ITool {
         return this;
     }
 
-    addEventListener(type: any, listener: (ev: any) => any, options ?: boolean | AddEventListenerOptions | undefined) {
+    addEventListener(type: any, listener: (ev: any) => any, options?: boolean | AddEventListenerOptions | undefined) {
         return this.$el.addEventListener<any>(type, listener, options);
     }
 
