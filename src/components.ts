@@ -1,6 +1,6 @@
 import { registerToolType } from '.';
 import { BarChild, Icon, Tool } from './core';
-import { IBarChildConfig, IIcon, IIconConfig, IIconScrollerConfig, IToolConfig } from './interfaces';
+import { IBarChildConfig, IIcon, IIconConfig, IIconsToolConfig, IToolConfig } from './interfaces';
 import { assertProps, Limiter } from './utils';
 
 
@@ -238,12 +238,12 @@ export class IconCounter2 extends Tool {
     }
 }
 
-export class IconScroller extends Tool {
+abstract class IconsTool extends Tool {
     iconMap: { [key: string]: IIcon } = {};
     iconNames: string[] = [];
     $limiter: Limiter;
 
-    constructor(config: IIconScrollerConfig) {
+    constructor(config: IIconsToolConfig) {
         super({ ...config, label: config.label, tag: 'li' });
         const { bar, current, circle, label } = config;
         config.icons.forEach((ic) => {
@@ -265,13 +265,6 @@ export class IconScroller extends Tool {
                 (!init) && this.emitEvent("input");
             }
         });
-        this.$el.addEventListener("wheel", (e) => {
-            e.deltaY < 0 ? this.$limiter.inc() : this.$limiter.dec();
-            e.preventDefault();
-        });
-        this.$el.addEventListener("mouseleave", (e: Event) => {
-            this.emitEvent("change", undefined, e, true);
-        });
         this._lastState = this._state;
         this.cancelClickEvent();
     }
@@ -289,6 +282,32 @@ export class IconScroller extends Tool {
     }
 }
 
+export class IconScroller extends IconsTool {
+    constructor(config: IIconsToolConfig) {
+        super(config)
+        this.$el.addEventListener("wheel", (e) => {
+            e.deltaY < 0 ? this.$limiter.inc() : this.$limiter.dec();
+            e.preventDefault();
+        });
+        this.$el.addEventListener("mouseleave", (e: Event) => {
+            this.emitEvent("change", undefined, e, true);
+        });
+    }
+}
+
+
+class IconSwitcher extends IconsTool {
+    constructor(config: IIconsToolConfig) {
+        super({ ...config, circle: true });
+        if (config.icons.length !== 2)
+            throw Error("Icon switcher must have exact 2 icons!")
+        this.$el.addEventListener("click", (e) => {
+            this.$limiter.inc();
+            this.emitEvent("change", undefined, e);
+        });
+    }
+}
+
 
 export function registerAll() {
     registerToolType(IconButton, ["ib", "icon-button", "IconButton"]);
@@ -298,4 +317,5 @@ export function registerAll() {
     registerToolType(IconCounter, ['ic', 'icon-counter', 'IconCounter']);
     registerToolType(IconCounter2, ['ic2', 'icon-counter2', 'IconCounter2']);
     registerToolType(IconScroller, ['is', 'icon-scroller', 'IconScroller']);
+    registerToolType(IconSwitcher, ["iw", "icon-switcher", "IconSwitcher"]);
 }

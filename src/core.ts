@@ -1,8 +1,8 @@
-import { IBar, IIconBaseConfig, ITheme, IThemeConfig, IThemes, IToolEventDetail } from './interfaces';
-// import { Toppy } from './toppy';
+import {
+    IBar, IIconBaseConfig, ITheme, IThemeConfig, IThemes, IToolConfig, IIconConfig,
+    IBarChildConfig, ITool, IBarPart, IIcon, IBarConfig, AddableItemType, IBarChild
+} from './interfaces';
 import { assertProps, camelCaseToDash, removeNull } from './utils';
-import { IToolConfig, IIconConfig, IBarChildConfig, ITool, IBarPart, IIcon } from './interfaces';
-import { IBarConfig, AddableItemType, IBarChild } from './interfaces';
 import { themes } from './theme';
 
 
@@ -15,7 +15,6 @@ export function registerToolType(Class: typeof BarChild, aliases: string[]) {
     }
     childNames.add(Class.name);
 }
-
 
 
 const APP_NAME = process.env.APP_NAME!;
@@ -330,6 +329,7 @@ export abstract class Tool extends BarChild implements ITool {
     }
 
     cancelClickEvent() {
+        // TODO: is this necessary?
         this.$el.addEventListener("click", (e: Event) => {
             e.stopPropagation();
             e.preventDefault();

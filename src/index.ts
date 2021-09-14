@@ -7,6 +7,10 @@ import { assertProps } from './utils';
 
 // TODO: add jest tests  https://github.com/testing-library/jest-dom
 
+// TODO: bundle umd + esm
+
+// TODO: integrate icon packs
+
 registerAllConponents();
 
 

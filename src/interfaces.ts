@@ -81,9 +81,9 @@ export interface IBar {
     getSvgLink(icon: string): string
 }
 
-export interface IIconScrollerConfig extends IToolConfig {
+export interface IIconsToolConfig extends IToolConfig {
     icons: IIconBaseConfig[]
-    current: string,
+    current: string
     circle: boolean
 }
 

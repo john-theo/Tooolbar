@@ -21,7 +21,7 @@ Interactive toolbar rendered from **LINES OF JSON**. Lightweight yet powerful, y
 
 - **Easy to use**, generate a nice-looking toolbar using **a simple json** 😱.
 
-- **Cool Components**, check out [IconCounter](#icon-counter), [IconScroller](#icon-scroller) and others 🤩.
+- **Cool Components**, check out [IconCounter](#icon-counter), [IconScroller](#icon-scroller), [IconSwitcher](#icon-switcher) and others 🤩.
 
 - **Extensibility**, build a full-featured custom component in [~50 lines of code](https://unpkg.com/tooolbar@0.1.2/demo/icon-switcher.js).
 
@@ -41,7 +41,7 @@ yarn add tooolbar
 
 ### CDN
 
-```bash
+```html
 <script src="https://unpkg.com/tooolbar@0.1.2/dist/index.min.js"></script>
 ```
 
@@ -218,7 +218,6 @@ value: number
 **Events**
 
 - input
-
 - change
 
 ### Icon Counter <sup>2</sup>
@@ -245,7 +244,6 @@ label1: string
 **Events**
 
 - input
-
 - change
 
 ### Icon Scroller
@@ -265,6 +263,22 @@ circle: boolean = false
 **Events**
 
 - input
+- change
+
+### IconSwitcher
+
+Click to change state.
+
+`type` aliases: 'iw', 'icon-switcher', 'IconSwitcher'
+
+**Props**
+
+```ts
+icon: {key: string, icon: string, label: string}[]
+current: string           // Current key
+```
+
+**Events**
 
 - change
 
@@ -307,14 +321,11 @@ Check out [this gist](https://gist.github.com/John-Theo/ce178ae4e69047e91d9eda94
 ## Features on the way
 
 - Vertical mode
-
 - Tooltip positioning
-
 - Tools flex alignment
-
 - Tool id uniqueness check
-
 - Generate from HTML tags
+- Integrate common icon packs
 
 ## Change log
 

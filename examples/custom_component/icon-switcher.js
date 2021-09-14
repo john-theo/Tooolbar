@@ -28,7 +28,6 @@ class IconSwitcher extends Tool {
         this.render();
         if (value < 0)
             throw Error("Current icon does not exist in icons!")
-        this.cancel
         this.$el.addEventListener("click", (e) => {
             this._lastState = 1 - this._lastState;
             this.render();
