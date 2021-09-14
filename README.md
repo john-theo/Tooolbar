@@ -9,7 +9,7 @@
 
 ```
 
-![](https://img.shields.io/badge/build-passing-success) ![](https://img.shields.io/badge/language-typescript-blue.svg) [![](https://img.shields.io/npm/dm/tooolbar.svg)](https://www.npmjs.com/package/tooolbar) ![](http://img.shields.io/badge/license-MIT-lightgrey)
+![](https://img.shields.io/badge/build-passing-success) ![](https://img.shields.io/badge/language-typescript-blue.svg) [![](https://img.shields.io/npm/dm/tooolbar.svg)](https://www.npmjs.com/package/tooolbar) ![](http://img.shields.io/badge/license-MIT-lightgrey) [![](https://data.jsdelivr.com/v1/package/npm/tooolbar/badge)](https://www.jsdelivr.com/package/npm/tooolbar)
 
 Interactive toolbar rendered from **LINES OF JSON**. Lightweight yet powerful, you can build a toolbar in literally seconds with this **7KB** (GZipped) package.
 
@@ -23,7 +23,7 @@ Interactive toolbar rendered from **LINES OF JSON**. Lightweight yet powerful, y
 
 - **Cool Components**, check out [IconCounter](#icon-counter), [IconScroller](#icon-scroller), [IconSwitcher](#icon-switcher) and others 🤩.
 
-- **Extensibility**, build a full-featured custom component in [~50 lines of code](https://unpkg.com/tooolbar@0.1.2/demo/icon-switcher.js).
+- **Extensibility**, build a full-featured custom component in [~50 lines of code](https://unpkg.com/tooolbar/demo/icon-switcher.js).
 
 ## Get Started
 
@@ -42,7 +42,8 @@ yarn add tooolbar
 ### CDN
 
 ```html
-<script src="https://unpkg.com/tooolbar@0.1.2/dist/index.min.js"></script>
+<script src="https://unpkg.com/tooolbar"></script>
+<script src="https://cdn.jsdelivr.net/npm/tooolbar"></script>
 ```
 
 ## Document
@@ -51,7 +52,7 @@ yarn add tooolbar
 
 <img src="./assets/img/basic.png" style="max-height: 160px;">
 
-[Code](https://github.com/John-Theo/Tooolbar/tree/main/examples/basic)  /  [Preview](https://unpkg.com/tooolbar@0.1.2/examples/basic/index.html)
+[Code](https://github.com/John-Theo/Tooolbar/tree/main/examples/basic)  /  [Preview](https://unpkg.com/tooolbar/examples/basic/index.html)
 
 ```javascript
 const bar = new Bar({ iconBaseUrl: "assets/icon" })
@@ -73,7 +74,7 @@ const bar = new Bar({ iconBaseUrl: "assets/icon" })
 
 <img src="./assets/img/custom_theme.png" style="max-height: 160px;">
 
-[Code](https://github.com/John-Theo/Tooolbar/tree/main/examples/custom_theme)  /  [Preview](https://unpkg.com/tooolbar@0.1.2/examples/custom_theme/index.html)
+[Code](https://github.com/John-Theo/Tooolbar/tree/main/examples/custom_theme)  /  [Preview](https://unpkg.com/tooolbar/examples/custom_theme/index.html)
 
 ```javascript
 Bar.registerTheme("ocean", {
@@ -116,11 +117,44 @@ bar.theme = 'ocean';
 
 > Style reference: https://codepen.io/havardob/details/qBjbQya
 
+### Vertical Layout
+
+[Code](https://github.com/John-Theo/Tooolbar/tree/main/examples/vertical_layout)  /  [Preview](https://unpkg.com/tooolbar/examples/vertical_layout/index.html)
+
+```javascript
+const bar = new Bar({
+    iconBaseUrl: "../../assets/icon",
+    align: 'space-between', height: "100%", width: "100%", vertical: true
+})
+    .bindTo(container)
+    .load(config);
+```
+
+### Listen Events
+
+[Code](https://github.com/John-Theo/Tooolbar/tree/main/examples/listeners)  /  [Preview](https://unpkg.com/tooolbar/examples/listeners/index.html)
+
+```javascript
+// Method 1
+const config = [
+    { id: "image", type: 'ib', icon: "image", label: "Gallery", listeners: {
+        click() {
+            console.log(this, 'clicked (defined in init)!')
+        }
+    } },
+];
+
+// Method 2
+bar.get('book').addEventListener("click", ()=>{
+    console.log(bar.get('book'), 'clicked (defined dynamically)!')
+})
+```
+
 ### Custom Component
 
 <img src="./assets/img/custom_component_light.png" style="max-height: 140px;"><img src="./assets/img/custom_component.png" style="max-height: 140px;">
 
-[Code](https://github.com/John-Theo/Tooolbar/tree/main/examples/custom_component)  /  [Preview](https://unpkg.com/tooolbar@0.1.2/examples/custom_component/index.html)
+[Code](https://github.com/John-Theo/Tooolbar/tree/main/examples/custom_component)  /  [Preview](https://unpkg.com/tooolbar/examples/custom_component/index.html)
 
 ```javascript
 const bar = new Bar({ iconBaseUrl: "assets/icon" })
@@ -143,7 +177,7 @@ bar.get('dark').addEventListener('click', (e) => {
 
 <img src="./assets/img/components.png" style="max-height: 200px">
 
-[Code](https://github.com/John-Theo/Tooolbar/tree/main/examples/components)  /  [Preview](https://unpkg.com/tooolbar@0.1.2/examples/components/index.html)
+[Code](https://github.com/John-Theo/Tooolbar/tree/main/examples/components)  /  [Preview](https://unpkg.com/tooolbar/examples/components/index.html)
 
 ### \<Base\>
 
@@ -300,7 +334,7 @@ bar.addEventListener("input", callback);
 
 ## Demo
 
-Check out a working demo [here](https://unpkg.com/tooolbar@0.1.2/demo/index.html).
+Check out a working demo [here](https://unpkg.com/tooolbar/demo/index.html).
 
 #### Things you can do
 
@@ -348,7 +382,7 @@ yarn run dev
 
 - [@awmleer](https://github.com/awmleer) for answering a critical question in the project.
 
-- [Akar Icons](https://github.com/artcoholic/akar-icons-app) for perfect icons used in the [demo](https://unpkg.com/tooolbar@0.1.2/demo/index.html).
+- [Akar Icons](https://github.com/artcoholic/akar-icons-app) for perfect icons used in the [demo](https://unpkg.com/tooolbar/demo/index.html).
 
 - [Online Ascii Tools](https://onlineasciitools.com/convert-text-to-ascii-art) for generating cool logo for the project.
 
