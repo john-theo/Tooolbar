@@ -43,6 +43,7 @@ yarn add tooolbar
 
 ```html
 <script src="https://unpkg.com/tooolbar"></script>
+<!-- Or -->
 <script src="https://cdn.jsdelivr.net/npm/tooolbar"></script>
 ```
 
@@ -360,6 +361,9 @@ Check out [this gist](https://gist.github.com/John-Theo/ce178ae4e69047e91d9eda94
 - Integrate common icon packs
 - Text Buttons and input box
 - React & Vuejs wrapper
+- Responsive css
+- Bundle to umd + esm
+- Support web component
 
 ## Change log
 

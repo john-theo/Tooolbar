@@ -14,7 +14,7 @@
         "build": "yarn run clean && webpack --mode production",
         "dev": "yarn run clean && webpack --mode development --watch",
         "clean": "rm -rf dist && mkdir dist",
-        "preversion": "yarn config set version-tag-prefix \"\" && yarn build",
+        "preversion": "yarn build",
         "postversion": "npm publish --force --registry=http://registry.npmjs.org --verbose && git push --tags && echo \"Successfully released version $npm_package_version!\"",
         "unpublish": "_u() { v=${1:-$npm_package_version}; npm unpublish tooolbar@$v --force --registry=http://registry.npmjs.org; git push --delete origin $v; git tag -d $v; echo \"Successfully unpublished version $v!\"; }; _u"
     },
